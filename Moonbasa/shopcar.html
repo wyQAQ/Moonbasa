@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/share.css" type="text/css">
+	<link rel="stylesheet" href="css/shopcar.css" type="text/css">
+</head>
+<body>
+	<!-- 公共部分 -->
+	<!-- 头部可关闭广告 -->
+		<div id="headad">
+			<a href="##"><img src="img/M11_27_140730.png"/>
+				<p id="closepic"><img src="img/colse.gif"></p>
+			</a>
+		</div>
+	<!--*******************-->
+	<!---头部导航条 -->
+		<div class="headnavbg">
+			<div class="headnav">
+				<ul class="headnav-left">
+					<li>
+						<i></i>
+						<a href="index.html">梦芭莎首页</a>
+					</li>
+					<li>
+						<i></i>
+						<a href="##">100%正品保证 10年品质保证</a>
+					</li>
+				</ul>
+				<ul class="headnav-right">
+					<li><a>登录</a></li>
+					<li class="rightline">|</li>
+					<li><a>注册</a></li>
+					<li class="rightline">|</li>
+					<li><i></i><a href="##">微信</a><img src="img/160919171653.jpg"></li>
+					<li class="rightline">|</li>
+					<li><i></i><a href="##">微博</a><img src="img/0826143310.jpg"></li>
+					<li class="rightline">|</li>
+					<li><i></i><a href="##">手机版</a><img src="img/download.gif"></li>
+					<li class="rightline">|</li>
+					<li><a href="##">收藏梦芭莎</a></li>
+					<li class="rightline">|</li>
+					<li><i></i><a href="shopcar.html">购物车</a></li>
+					<li class="rightline">|</li>
+					<li><i></i><a href="##">全部分类</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- 头部+logo -->
+		<div class="headerbg">
+			<div class="header">
+				<div class="header-left">
+					<a href="index.html"><img src="img/logomoonbasa.png"></a>
+					<p>
+						<span>梦芭莎饰品</span>
+						<span>梦芭莎自营品牌</span>
+					</p>
+				</div>
+				<div class="header-right">
+					<div class="searchtxt">
+						<p>
+							<input id="searchinput" type="text" placeholder="领200红包，购冬尚搭配，让你美得不一样！">
+						</p>
+						<p>
+							<input id="searchbtn" type="button" value="搜全站">
+						</p>
+					</div>
+					<p id="search_inshop">搜本店</p>
+				</div>
+			</div>
+		</div>
+	<!--*******************-->
+<!-- 公共部分end -->
+	<div class="carbg">
+		<div class="cartop">
+			<p><input type="checkbox" id="all">全选</p>
+			<p>商品</p>
+			<p>单价</p>
+			<p>数量</p>
+			<p>小计</p>
+			<p>操作</p>
+		</div>
+	</div>
+
+	<!-- 尾部 -->
+	<div class="footer">
+		<div class="copyright">
+			<a href="##">首页</a>
+			<a href="##">公司简介</a>
+			<a href="##">旗下品牌</a>
+			<a href="##">零售店址</a>
+			<a href="##">梦芭莎网盟</a>
+			<a href="##">网店代理</a>
+			<a href="##">网站地图</a>
+			<a href="##">友情链接</a>
+			<br>
+			Copyright &copy; 2010-2019 梦芭莎官方网站，广州摩拉网络科技有限公司 All Rights Reserved 粤B2-20080069号 <img src="img/beian.png">粤公网安备44010302000075
+		</div>
+		<div class="iconpic">
+			<img src="img/mbs_f_01.jpg">
+			<img src="img/mbs_f_02.jpg">
+			<img class="logodown" src="img/logo_down.jpg">
+			<img src="img/logo.jpg">
+			<img src="img/mbs_f_04.jpg">
+			<img src="img/mbs_f_05.jpg">
+			<img src="img/mbs_f_06.jpg">
+			<img src="img/mbs_f_07.jpg">
+		</div>
+	</div>
+</body>
+</html>
+<script src="js/ajax.js"></script>
+<script src="js/share.js"></script>
+<script src="js/pool.js"></script>
+<script>
+var carbg=document.querySelector(".carbg");
+var goods=document.getElementsByClassName('goods');
+if(getCookie('carlist')){
+	var cook= getCookie('carlist').split('-');
+	var totalmoney=0;
+	var cooklen=cook.length-1;
+	//console.log(cooklen);
+	for(var j=0;j<cook.length-1;j++){//cookie存放数据的的数量
+		var data=JSON.parse(cook[j]);
+		var str='<div class="goods"><p><input type="checkbox"></p><p class="pic"><img src="listimg/detailsmall'+data.id+'-1.jpg"></p><p class="detail"><span>'+data.detailname+'</span></p><p class="colorsize"><span>颜色：'+data.color+'</span><span>尺码：'+data.size+'</span></p><p class="price">'+data.price+'</p><p class="count"><button>-</button><input type="text" value="'+data.count+'"><button>+</button><span>有货</span></p><p class="totalwei"><span class="total">￥'+(parseInt(data.count))*(parseInt(data.price.slice(1, data.price.length-1)))+'.00</span></span></p><p><span class="delbtn">删除</span><span>移到我的收藏</span><span>加到我的关注</span></p></div>';
+		carbg.innerHTML+=str;
+		totalmoney+=(parseInt(data.count))*(parseInt(data.price.slice(1, data.price.length-1)));
+	}
+	carbg.innerHTML+='<div class="totalmoney"><p id="goodcount">共<span>'+cooklen+'</span>件商品</p><p id="money">总计：￥'+totalmoney+'.00</p><p id="pay">去结算</p></div>';
+}else{
+	carbg.innerHTML+='<div class="emptycar"><dl><dt>您的购物车中没有商品，您可以：</dt><dd>1. 如果您还未登录，可能导致购物车为空，请<a href="reglog.html?登录">登录</a><br/>2.<a href="index.html">立即选购商品>></a></dd></dl></div>';
+}
+for(var i=0;i<goods.length;i++){
+	goods[i].onclick=function(e){
+		var money=document.getElementById("money");
+		var summoney=parseInt(money.innerHTML.slice(4, money.innerHTML.length));
+		var goodcount=document.getElementById("goodcount").firstElementChild;
+		var sumgoodcount=parseInt(goodcount.innerHTML);
+		//console.log(sumgoodcount)
+		var e=e||event;
+		var target=e.srcElement|| e.target;
+		if(target.innerHTML=="+"){
+			var price=Number(target.parentNode.previousElementSibling.innerHTML.slice(1,target.parentNode.previousElementSibling.innerHTML.length));
+			var count=Number(target.previousElementSibling.value);
+			var strtal=target.parentNode.nextSibling.firstElementChild.innerHTML;
+			var total=Number(strtal.slice(1,strtal.length));
+			count++;
+			target.previousElementSibling.value=count;
+			target.parentNode.nextSibling.firstElementChild.innerHTML='￥'+price*count+".00";
+			summoney+=parseInt(price);
+			money.innerHTML="总计：￥"+summoney+'.00';
+		}
+		if(target.innerHTML=="-"){
+			var price=Number(target.parentNode.previousElementSibling.innerHTML.slice(1,target.parentNode.previousElementSibling.innerHTML.length));
+			var count=Number(target.nextElementSibling.value);
+			var strtal=target.parentNode.nextSibling.firstElementChild.innerHTML;
+			var total=Number(strtal.slice(1,strtal.length));
+			count--;
+			if(count<1){
+				count=1;
+			}else{
+				target.nextElementSibling.value=count;
+			target.parentNode.nextSibling.firstElementChild.innerHTML='￥'+price*count+".00";
+			summoney-=parseInt(price);
+			money.innerHTML="总计：￥"+summoney+'.00';
+			}
+		}
+			
+		if(target.tagName=="SPAN" && target.innerHTML=="删除"){
+			var oldmoneystr=target.parentNode.previousElementSibling.firstElementChild.innerHTML;
+			var oldmoney=parseInt(oldmoneystr.slice(1, oldmoneystr.length));
+			summoney-=parseInt(oldmoney);//console.log(summoney);
+			money.innerHTML="总计：￥"+summoney+'.00';
+			var oldcountstr=target.parentNode.previousElementSibling.previousElementSibling.firstElementChild.nextElementSibling.value;
+			if(sumgoodcount<=0){
+				sumgoodcount=0;
+			}else{
+				sumgoodcount-=1;
+			}
+			goodcount.innerHTML=sumgoodcount;
+			if(sumgoodcount==0){
+				document.querySelector(".totalmoney").innerHTML='<div class="emptycar"><dl><dt>您的购物车中没有商品，您可以：</dt><dd>1. 如果您还未登录，可能导致购物车为空，请<a href="reglog.html?登录">登录</a><br/>2.<a href="index.html">立即选购商品>></a></dd></dl></div>';
+			}
+			target.parentNode.parentNode.remove();
+			var cook= getCookie('carlist').split('-');
+			var newstr='';
+			for(var sti=0;sti<cook.length-2;sti++){
+				newstr+=cook[sti]+'-';
+			}
+			setCookie('carlist',newstr,7);	
+		}
+	}
+}
+//全选事件
+var all = document.getElementById('all');
+var tab = document.getElementsByClassName('goods');
+var input=[];
+for(var k=0;k<tab.length;k++){
+	input[k] = tab[k].firstElementChild.firstElementChild;
+}
+all.onclick = function(){
+	//判断全全选是否被选中  如果全选这个按钮被选中的话那么就让所有的checkbox都为选中状态否则都为不选中状态
+	if(all.checked){
+		for(var i=0;i<input.length;i++){
+			input[i].checked = 'checked';
+			input[i].parentNode.parentNode.style.background="#FFF4E8";
+		}
+	}else{
+		for(var i=0;i<input.length;i++){
+			input[i].checked = '';
+			input[i].parentNode.parentNode.style.background="#fff";
+		}
+	}
+}
+//逐个选择
+for(var j=0;j<input.length;j++){
+	input[j].onclick = function(){
+		var bstop = true;
+		for(var i=0;i<input.length;i++){
+			if(input[i].checked==false){
+				bstop = false;
+				break;
+			}
+			//this.parentNode.parentNode.style.background="#FFF4E8";
+			
+		}
+		if(bstop){
+			all.checked = 'checked'
+		}else{
+			all.checked = '';
+			//this.parentNode.parentNode.style.background="#FFF4E8";
+		}
+	}
+}
+</script>

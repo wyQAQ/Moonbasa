@@ -1,0 +1,39 @@
+body,p,dl,dt,dd{margin:0;padding:0;}
+a{text-decoration: none;}
+.carbg{width:990px;margin:100px auto;overflow: hidden;padding:10px;margin-bottom: 20px;}
+#all{float: left;display: block;}
+input{width:13px;height:13px;}
+.cartop{height:30px;background-color: rgb(243,243,243);padding:10px 0;}
+.cartop p{float: left;height: 18px;line-height: 18px;padding-top: 7px;}
+.cartop p:nth-of-type(1){width: 122px;padding-left: 11px;}
+.cartop p:nth-of-type(2){width:230px;}
+.cartop p:nth-of-type(3){width:250px;text-align: right;}
+.cartop p:nth-of-type(4){width:100px;text-align: right;}
+.cartop p:nth-of-type(5){width: 130px;text-align: right;}
+.cartop p:nth-of-type(6){width: 95px;text-align: right;}
+.goods{width:990px;margin:20px auto;overflow: hidden;border:1px solid #ccc;padding:10px 0px;}
+.goods p{float: left;}
+.goods p span{display: block;}
+.pic{width: 80px;height:80px;border:1px solid #eee;margin-right:10px;margin-left:35px;}
+.pic img{width: 100%;height:100%;display: block;}
+.detail{width:208px;line-height: 40px;overflow: hidden;}
+.detail span:nth-of-type(1){font-size:12px;line-height: 20px;color: #333;}
+.detail span:nth-of-type(2){color: #6485cb;font-size: 12px;line-height: 20px;}
+.detail span:nth-of-type(3){color: #ccc;font-size: 12px;line-height: 20px;}
+.colorsize{height: 80px;line-height: 20px;overflow: hidden;padding: 0px 10px 0;width: 160px;font-size: 12px;color:#666;}
+.price{font-size: 12px;line-height: 20px;color: #666;margin-left:50px;}
+.count{height: 20px;margin-left:32px;}
+.count input{display: inline-block;width: 40px;height:20px;border:1px solid #cacbcb;text-align: center;}
+.count span{font-size: 10px;color: #666;text-align: center;}
+.totalwei{margin-left:66px;width:70px;}
+.totalwei span{display:block;height: 30px;font-weight: 700;color: #333;font-size: 14px;}
+.goods p:last-of-type{margin-left: 35px;font-size: 10px;color:#666;}
+.totalmoney{height:70px;}
+#money{font-size: 12px;line-height: 30px;text-align: right;color: #d60076;font-weight: 700;font-size: 18px;font-family: Arial,Helvetica,sans-serif;}
+#pay{display: inline-block;width: 226px;height: 48px;color: #fff;text-align: center;font-size: 22px;line-height: 48px;float: right;background: #EB0067;padding-right:10px;}
+#goodcount{font-size: 10px;line-height: 30px;text-align: right;padding-right:10px;}
+.emptycar{float: left;overflow: hidden;margin: 0 auto;padding: 0 147px 0 146px;width: 687px;height: 250px;background: url(../img/nullshopcar.jpg) 202px 62px no-repeat;}
+.emptycar dl{float: left;padding-top: 89px;padding-left: 208px;width: 405px;height: 120px;}
+.emptycar dl dd{width: 370px;font: 16px/35px '微软雅黑';line-height: 20px;color: #555;}
+.emptycar dl dd a{color: #d3023c;font: 16px/35px '微软雅黑';}
+

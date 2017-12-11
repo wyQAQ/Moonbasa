@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Moonbasa注册登录</title>
+	<link rel="stylesheet" href="css/share.css" type="text/css">
+	<link rel="stylesheet" href="css/reglog.css" type="text/css">
+</head>
+</head>
+<body>
+	<div class="regbg">
+		<a href="index.html" class="regheadpic"><img src="img/M4_5_134701.jpg"></a>
+		<div class="regcon">
+			<p class="regcon-left">
+				<img src="img/M8_23_104640.jpg">
+			</p>
+			<div class="regcon-right">
+				<p class="regtitle">
+					<span id="logspan">登录<i></i></span>
+					<span id="registerspan">注册<i></i></span>
+				</p>
+				<div id="regform" class="reglogform">
+					<form action="">
+						<p>
+							<label ></label><input type="text" placeholder="邮箱" data-name="邮箱" id="reguser"><!-- for="uesrName" -->
+							<span>您输入的邮箱不符合规范</span>
+						</p>
+						<p>
+							<label ></label><input type="text" placeholder="手机号" data-name="手机号"><!-- for="uesrName" -->
+							<span>您输入的手机号不符合规范</span>
+						</p>
+						<p>
+							<label class="pstxt"></label><input type="password" placeholder="密码" data-name="密码" id="regpass"><!-- for="uesrName" -->
+							<span>密码请设为8-20位字母和数字！</span>
+						</p>
+						<p>
+							<label class="pstxt"></label><input type="password" placeholder="确认密码" data-name="确认密码"><!-- for="uesrName" -->
+							<span>两次输入的密码不一致！</span>
+						</p>
+						<p>
+							<input class="checkcode" type="text" placeholder="验证码" data-name="验证码"><!-- for="uesrName" <--><i id="checkcodecon"></i><a href="##" id="change">换一张</a>
+							<span>请正确输入验证码</span>
+						</p>
+						<p>
+							<input type="button" id="regbtn" value="同意以下协议，提交">
+						</p>
+						<p class="item">
+							<input type="checkbox" id="agree"><i>同意</i><a href="##">梦芭莎注册条款</a>
+						</p>
+					</form>
+				</div>
+				<div id="logform" class="reglogform">
+					<form action="">
+						<p>
+							<label ></label><input type="text" placeholder="手机/邮箱/会员卡号" data-name="用户" id="loguser"><!-- for="uesrName" -->
+							<span>用户名格式错误！</span>
+						</p>
+						
+						<p>
+							<label class="pstxt"></label><input type="password" placeholder="密码" data-name="密码" id="logpass"><!-- for="uesrName" -->
+							<span>密码格式错误！</span>
+						</p>
+						<p class="forgetpass">
+							<a href="##">忘记密码？</a>
+						</p>
+						<p>
+							<input type="button" id="logbtn" value="立即登录">
+						</p>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<script src="js/pool.js"></script>
+<script>
+var logregstr=decodeURI(location.href.split('?')[1], "UTF-8");
+//console.log(logregstr);
+var logform=document.getElementById("logform");
+var regform=document.getElementById("regform");
+var registerspan=document.getElementById("registerspan");
+var logspan=document.getElementById("logspan");
+var userarr=[];
+if(logregstr=="登录"){
+	logspan.firstElementChild.style.display="block";
+	logform.style.display="block";
+	regform.style.display="none";
+	registerspan.firstElementChild.style.display="none";
+}else{
+	registerspan.firstElementChild.style.display="block";
+	regform.style.display="block";
+	logform.style.display="none";
+	logspan.firstElementChild.style.display="none";
+}
+var registerspan=document.getElementById("registerspan");
+var regform=document.getElementById("regform");
+var input=regform.getElementsByTagName("input");
+var regbtn=document.getElementById("regbtn");
+var agree=document.getElementById("agree");
+var checkcodecon=document.getElementById("checkcodecon");
+var change=document.getElementById("change");
+var loginput=logform.getElementsByTagName("input");
+
+registerspan.onclick=function(){
+	this.firstElementChild.style.display="block";
+	regform.style.display="block";
+	logform.style.display="none";
+	logspan.firstElementChild.style.display="none";
+}
+//生成验证码
+checkcodecon.innerHTML=randomCode();
+change.onclick=function(){
+	checkcodecon.innerHTML=randomCode();
+}
+//正则验证
+for(var i=0;i<input.length;i++){
+	input[i].onblur=function(){
+		var pre=this.getAttribute("data-name");
+		if(pre=="邮箱"){
+			if(/^[a-zA-Z0-9]\w{5,11}@[0-9a-zA-Z]{2,}\.(com|net|cn)$/.test(this.value)==false){
+				this.nextElementSibling.style.display="block";
+				}else{
+					this.nextElementSibling.style.display="none";
+					}
+		}
+		if(pre=="手机号"){
+			if(/^[1]\d{10}$/.test(this.value)==false){
+				this.nextElementSibling.style.display="block";
+				}else{
+					this.nextElementSibling.style.display="none";
+					}
+		}
+		if(pre=="密码"){
+			if(/^.{8,20}$/.test(this.value)==false){
+				this.nextElementSibling.style.display="block";
+			}else{
+					this.nextElementSibling.style.display="none";
+				}	
+		}
+		if(pre=="确认密码"){
+			var pass=this.parentNode.previousElementSibling.firstElementChild.nextElementSibling.value;
+			if(this.value!=pass){
+				this.nextElementSibling.style.display="block";
+				}else{
+					this.nextElementSibling.style.display="none";
+					}
+		}
+		
+		if(pre=="验证码"){
+			if(this.value!=this.nextElementSibling.innerHTML){
+				this.parentNode.lastElementChild.style.display="block";
+				}else{
+					this.parentNode.lastElementChild.style.display="none";
+					}
+		}
+	}	
+}
+//注册按钮
+agree.onclick=function(){
+	if(this.checked){console.log(regbtn)
+		regbtn.onclick=function(){
+			for(var i=0;i<input.length;i++){
+				if(input[i].value==''){
+					alert("请填完信息");
+					return ;
+				}
+			}
+			var obj={};
+			var userName="userName";
+			var userPass="userPass";
+			var uname=document.getElementById("reguser").value;
+			var upass=document.getElementById("regpass").value;
+			obj[userName]=uname;
+			obj[userPass]=upass;
+			userarr.push(obj);
+			var schar='';
+			for(var i=0;i<userarr.length;i++){
+				schar+=JSON.stringify(userarr[i])+'-';
+			}
+			var cook= getCookie('userIfo');
+			console.log(schar);
+			if(!getCookie('userIfo')){
+				setCookie('userIfo',schar,7);
+				console.log(getCookie('userIfo')+'---------------');
+			}else{
+				setCookie('userIfo',cook+schar,7);
+				console.log(getCookie('userIfo')+'+++++++++++++');
+			}
+		}
+	}else{
+		regbtn.onclick=null;
+	}
+}
+
+//登录
+logspan.onclick=function(){
+	this.firstElementChild.style.display="block";
+	logform.style.display="block";
+	regform.style.display="none";
+	registerspan.firstElementChild.style.display="none";
+}
+//登录验证
+for(var i=0;i<loginput.length;i++){
+	loginput[i].onblur=function(){
+		var pre=this.getAttribute("data-name");
+		if(pre=="用户"){
+			if(this.value==''){
+				this.nextElementSibling.style.display="block";
+				}else{
+					this.nextElementSibling.style.display="none";
+					}
+		}
+		if(pre=="密码"){
+			if(this.value==''){
+				this.nextElementSibling.style.display="block";
+				}else{
+					this.nextElementSibling.style.display="none";
+					}
+		}
+	}
+}
+//登陆按钮
+logbtn.onclick=function(){
+	var cookie=getCookie('userIfo');
+	//console.log(cookie);
+	for(var i=0;i<loginput.length;i++){
+		if(loginput[i].value==''){
+			alert("账号密码不能为空");
+			return ;
+		}
+	}
+	if(cookie){
+		var cook= cookie.split('-');
+		for(var i=0;i<cook.length-1;i++){
+			var data=JSON.parse(cook[i]);
+			//console.log(data)
+			if(loguser.value==data.userName && logpass.value==data.userPass){
+				//console.log('登录成功');
+				location.href="index.html";
+			}else{
+				alert("用户名或密码错误");
+			}
+		}
+	}
+}
+
+
+</script>

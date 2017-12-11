@@ -1,0 +1,24 @@
+.hatsbg{width: 1200px;margin:0 auto;margin-top:10px;position: relative;}
+.hatheadpic{height:126px;}
+.hatheadpic img{display: block;}
+#hatslist{overflow: hidden;}
+i{font-style: normal;}
+.phonelist{width: 229px;float: left;margin: 8px 4px 0 4px;border: 1px solid #ececec;}
+.phonelist:hover{border:1px solid #e20265;box-shadow: 0px 0px 4px #ececec;}
+.phone{width: 227px;}
+.phone img{display: block;width: 229px;height: 311px;}
+.smallphonebg{width: 218px;overflow: hidden;padding-top: 6px;height: 39px;padding-left: 9px;}
+.smallphone{float: left;width: 24px;height: 35px;border: 1px solid #d8dad9;padding: 1px;margin-right: 6px;}
+.smallphone img{display: block;width: 24px;height: 35px;}
+.price{color: #e4393c;font-size: 20px;line-height: 22px;height: 22px;font-weight: 800;margin-bottom: 8px;}
+.detail{overflow: hidden;}
+.detail a{display:block;width: 218px;padding-left: 8px;white-space: nowrap;color: #333;overflow: hidden;text-overflow: ellipsis;height: 22px;text-align: left;}
+.shopname a{display:block;color: #9a9a9a;text-decoration: underline;padding-left:8px;}
+.pingjia{padding: 0;border-top: 1px solid #ececec;height: 28px;line-height: 28px;margin-top: 5px;}
+.pingjia span{height: 22px;overflow: hidden;text-align: left;padding-left:8px;}
+.pingjia a{color: #0087df;padding-left: 12px;}
+.btnList{position: absolute;top: 622px;left: 400px;}
+.btnList a {color: #999; display: inline-block; width:50px; height:32px;border:1px solid #ccc; border-radius:5px; margin-right:5px; text-align:center;font-size: 14px;line-height: 32px;font-weight: 600;}
+.btnList a:hover{ background:#ffd100;border-color: #ffd100;}
+
+

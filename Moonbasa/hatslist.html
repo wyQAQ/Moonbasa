@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/share.css" type="text/css">
+	<link rel="stylesheet" href="css/hatslist.css" type="text/css">
+</head>
+<body>
+	<!-- 公共部分 -->
+	<!-- 头部可关闭广告 -->
+		<div id="headad">
+			<a href="##"><img src="img/M11_27_140730.png"/>
+				<p id="closepic"><img src="img/colse.gif"></p>
+			</a>
+		</div>
+	<!--*******************-->
+	<!---头部导航条 -->
+		<div class="headnavbg">
+			<div class="headnav">
+				<ul class="headnav-left">
+					<li>
+						<i></i>
+						<a href="index.html">梦芭莎首页</a>
+					</li>
+					<li>
+						<i></i>
+						<a href="##">100%正品保证 10年品质保证</a>
+					</li>
+				</ul>
+				<ul class="headnav-right">
+					<li><a>登录</a></li>
+					<li class="rightline">|</li>
+					<li><a>注册</a></li>
+					<li class="rightline">|</li>
+					<li><i></i><a href="##">微信</a><img src="img/160919171653.jpg"></li>
+					<li class="rightline">|</li>
+					<li><i></i><a href="##">微博</a><img src="img/0826143310.jpg"></li>
+					<li class="rightline">|</li>
+					<li><i></i><a href="##">手机版</a><img src="img/download.gif"></li>
+					<li class="rightline">|</li>
+					<li><a href="##">收藏梦芭莎</a></li>
+					<li class="rightline">|</li>
+					<li><i></i><a href="shopcar.html">购物车</a></li>
+					<li class="rightline">|</li>
+					<li><i></i><a href="##">全部分类</a></li>
+				</ul>
+			</div>
+		</div>
+	<!--*******************-->
+	<!-- 头部+logo -->
+		<div class="headerbg">
+			<div class="header">
+				<div class="header-left">
+					<a href="index.html"><img src="img/logomoonbasa.png"></a>
+					<p>
+						<span>梦芭莎饰品</span>
+						<span>梦芭莎自营品牌</span>
+					</p>
+				</div>
+				<div class="header-right">
+					<div class="searchtxt">
+						<p>
+							<input id="searchinput" type="text">
+						</p>
+						<p>
+							<input id="searchbtn" type="button" value="搜索">
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	<div class="hatsbg">
+		<p class="hatheadpic">
+			<img src="img/M11_28_105228.jpg">
+		</p>
+		<div id="hatslist"></div>
+		<div class="btnList">
+         	<a class="first" href="##">上一页</a><a class="last" href="##">下一页</a>
+    	</div>
+	</div>
+
+
+	<!-- 尾部 -->
+	<div class="footer">
+		<div class="copyright">
+			<a href="##">首页</a>
+			<a href="##">公司简介</a>
+			<a href="##">旗下品牌</a>
+			<a href="##">零售店址</a>
+			<a href="##">梦芭莎网盟</a>
+			<a href="##">网店代理</a>
+			<a href="##">网站地图</a>
+			<a href="##">友情链接</a>
+			<br>
+			Copyright &copy; 2010-2019 梦芭莎官方网站，广州摩拉网络科技有限公司 All Rights Reserved 粤B2-20080069号 <img src="img/beian.png">粤公网安备44010302000075
+		</div>
+		<div class="iconpic">
+			<img src="img/mbs_f_01.jpg">
+			<img src="img/mbs_f_02.jpg">
+			<img class="logodown" src="img/logo_down.jpg">
+			<img src="img/logo.jpg">
+			<img src="img/mbs_f_04.jpg">
+			<img src="img/mbs_f_05.jpg">
+			<img src="img/mbs_f_06.jpg">
+			<img src="img/mbs_f_07.jpg">
+		</div>
+	</div>
+</body>
+</html>
+<script src="js/pool.js"></script>
+<script src="js/ajax.js"></script>
+<script src="js/share.js"></script>
+<script>
+//显示列表
+var hatslist=document.getElementById("hatslist");
+var btnList=document.querySelector(".btnList");
+var first=document.querySelector(".first");
+var last=document.querySelector(".last");
+var inputtype=decodeURI(location.href.split('?')[1], "UTF-8");//"饰品";
+//console.log(inputtype);
+ajax("get","data.json",'',function(goods){
+	//console.log(goods[0].typeinfo[0].info[0]);
+	for(var i=0;i<goods.length;i++){
+		var total=0;
+		var strarr=[];
+		if(goods[i].inputtype==inputtype){
+			for(var tpi=0;tpi<goods[i].typeinfo.length;tpi++){
+				for(var tpj=0;tpj<goods[i].typeinfo[tpi].info.length;tpj++){
+					total++;
+					var smallstr="";
+					for(var tpk=0;tpk<goods[i].typeinfo[tpi].info[tpj].smallhat.length;tpk++){
+						//smallstr+='<p class="smallphone"><img src="listimg/smallhat'+(tpj+1)+'-'+(tpk+1)+'.jpg" data-url="'+(tpj+1)+'-'+(tpk+1)+'"/></p>';
+						smallstr+='<p class="smallphone"><img src="'+goods[i].typeinfo[tpi].info[tpj].smallhat[tpk]+'" data-url="'+goods[i].typeinfo[tpi].info[tpj].middlehat[tpk]+'"/></p>';
+					}
+					str='<div class="phonelist" data-id="'+goods[i].typeinfo[tpi].info[tpj].id+'">'+'<p class="phone"><img src="'+goods[i].typeinfo[tpi].info[tpj].middlehat[0]+'"></p>'+'<div class="smallphonebg">'+smallstr+'</div>'+'<p class="price">'+goods[i].typeinfo[tpi].info[tpj].price+'</p>'+'<p class="detail"><a href="##">'+goods[i].typeinfo[tpi].info[tpj].detail+'</a></p>'+'<p class="shopname">'+'<a href="##">'+goods[i].typeinfo[tpi].info[tpj].shopname+'</a></p>'+'<p class="pingjia"><span>评价</span><a href="##">'+goods[i].typeinfo[tpi].info[tpj].pingjia+'条</a></p>'+'</div>';
+						strarr.push(str);
+				}
+			}
+			//console.log(total);
+			pagingShow(total,strarr,5);
+			break;
+		}
+		for(var j=0;j<goods[i].typeinfo.length;j++){
+			if(goods[i].typeinfo[j].type==inputtype){
+				var str="";
+				var strarr=[];
+				var total=goods[i].typeinfo[j].info.length;
+				for(var k=0;k<goods[i].typeinfo[j].info.length;k++){//
+					var smallstr="";
+					for(var f=0;f<goods[i].typeinfo[j].info[k].smallhat.length;f++){
+						//smallstr+='<p class="smallphone"><img src="listimg/smallhat'+(k+1)+'-'+(f+1)+'.jpg" data-url="'+(k+1)+'-'+(f+1)+'"/></p>';
+						smallstr+='<p class="smallphone"><img src="'+goods[i].typeinfo[j].info[k].smallhat[f]+'" data-url="'+goods[i].typeinfo[j].info[k].largehat[f]+'"/></p>';
+					}
+					str='<div class="phonelist" data-id="'+goods[i].typeinfo[j].info[k].id+'">'+'<p class="phone"><img src="'+goods[i].typeinfo[j].info[k].middlehat[0]+'"></p>'+'<div class="smallphonebg">'+smallstr+'</div>'+'<p class="price">'+goods[i].typeinfo[j].info[k].price+'</p>'+'<p class="detail"><a href="##">'+goods[i].typeinfo[j].info[k].detail+'</a></p>'+'<p class="shopname">'+'<a href="##">'+goods[i].typeinfo[j].info[k].shopname+'</a></p>'+'<p class="pingjia"><span>评价</span><a href="##">'+goods[i].typeinfo[j].info[k].pingjia+'条</a></p>'+'</div>';
+					strarr.push(str);
+				}
+				pagingShow(total,strarr,2);break;
+			}
+		}
+		
+	}
+		
+	
+
+//分页
+function pagingShow(total,strarr,count){
+	var num=Math.ceil(total/count);
+	//console.log(num);
+	var iNow=0;
+	//分页按钮
+	for(var i=0;i<num;i++){
+		var a=document.createElement("a");
+		a.className="pagenum";
+		a.innerHTML=(i+1);
+		btnList.insertBefore(a,last);
+	}
+	//分页加载
+	pageshow(0);
+	function pageshow(n){
+		var str='';
+		for(var i=n*count;i<Math.min(total,(n+1)*count);i++){
+			str+=strarr[i];
+		}
+		hatslist.innerHTML=str;
+		smallmiddlechange();
+
+	}
+	//上一页
+	//console.log(first,last)
+	first.onclick=function(){
+		if(iNow==0){
+			iNow=0;
+		}else{
+			iNow--;
+		}
+		pageshow(iNow);
+		//fordetail();
+	}
+	//下一页
+	last.onclick=function(){
+		if(iNow==num-1){
+			iNow=num-1;
+		}else{
+			iNow++;
+		}
+		pageshow(iNow);
+		//fordetail();
+	}
+	//页数显示
+	var pagebut=document.querySelectorAll(".pagenum");
+	for(var i=0;i<pagebut.length;i++){
+		pagebut[i].index=i;
+		pagebut[i].onclick=function(){	
+			iNow=this.index;	
+			pageshow(iNow);
+			
+		}		
+	}
+	smallmiddlechange();
+}
+
+
+
+
+//大小图切换&&跳转详情页	
+smallmiddlechange();
+function smallmiddlechange(){
+	var phonelist=document.getElementsByClassName("phonelist");	
+	//console.log(phonelist);
+	for(var k=0;k<phonelist.length;k++){
+		var omiddle = phonelist[k].firstElementChild.firstElementChild;
+		var asmall=phonelist[k].firstElementChild.nextElementSibling.querySelectorAll(".smallphone");
+			for(var i=0;i<asmall.length;i++){
+				var asmfchild=asmall[i].getElementsByTagName("img");	
+				asmall[i].index = i;
+				asmfchild[0].onmouseover = function(){
+					var picnum=this.getAttribute("data-url");
+					this.parentNode.style.border="1px solid #e10164";
+					//this.parentNode.parentNode.previousElementSibling.firstElementChild.src='listimg/'+'middlehat'+picnum+'.jpg';
+					this.parentNode.parentNode.previousElementSibling.firstElementChild.src=picnum;
+				}
+				asmfchild[0].onmouseout = function(){
+					this.parentNode.style.border="1px solid #d8dad9";
+				}
+		}
+		//跳转详情页
+		phonelist[k].onclick=function(){
+			var num=this.getAttribute("data-id");
+			location.href="gooddetails.html?"+num;
+		}
+	}
+}
+});
+	
+
+</script>	

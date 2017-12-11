@@ -1,0 +1,35 @@
+body{color: #555;font-size: 12px;font-family: "宋体";line-height: 22px;background: #cecccf;}
+i{font-style: normal;}
+.regbg{width:1017px;margin:0 auto;}
+.regheadpic{display: block;width: 100%;height:117px;}
+.regheadpic img{display: block;width:100%;height:100%;}
+.regcon{background-color: #fff;width: 1016px;overflow: hidden;padding-bottom: 10px;}
+.regcon-left{width: 505px;height: auto;float: left;overflow: hidden;}
+.regcon-left img{margin: 23px 18px 20px 84px;}
+.regcon-right{float: left;width: 400px;overflow: hidden;text-align: left;padding-top: 20px;}
+.regtitle{text-align: left;height: 37px;}
+.regtitle span{float:left;display: block;color: #9f9f9f;width: 49%;text-align: center;font-size: 14px;padding-bottom: 15px;position: relative;}
+.regtitle span i{position: absolute;left:36%;bottom:0;width:55px;height:2px;background-color: #000;display: none;}
+.regtitle span:hover{color: #000;cursor: pointer;}
+.reglogform{display:none;padding: 30px 0 0 34px;border: 1px solid #dcdcdc;width: 364px;position: relative;}
+.reglogform p{width: 365px;overflow: hidden;height: 65px;position: relative;margin-bottom:10px;}
+.reglogform p label{width: 45px;height: 35px;font: 12px/25px '宋体';display: block;position: absolute;z-index: 1;top: 1px;left: -4px;background-position: -5px -48px;background-image: url(../img/login_icon0.png);}
+.reglogform p .pstxt{background-position: -4px -94px;}
+.reglogform p input{width: 322px;height: 40px;border: #c9c9c9 1px solid;padding-left: 0;line-height: 40px;position: absolute;left: 2px;z-index: 0;border-radius: 4px;text-indent: 32px;}
+.reglogform p span{display:none;padding-left: 20px;background: url(../img/login_icon0.png) no-repeat left 5px;position: absolute;top: 45px;}
+.reglogform p .checkcode{width:122px;text-indent: 16px;}
+.reglogform p #checkcodecon{position:absolute;left:40%;width:122px;text-align: center;font-size: 32px;line-height: 40px;height:40px;border:1px solid #ccc;border-radius: 4px;}
+#change{width: 48px;height: 24px;color: #797979;text-align: center;line-height: 24px;padding-right: 7px;position: absolute;top:10px;left: 78%;}
+#regbtn,#logbtn{width: 324px;height: 43px;overflow: hidden;color: #fff;border: 0;font: 15px/43px '微软雅黑';text-align: center;cursor: pointer;background: #e30165;display: block;line-height: 40px;margin-left: 2px;border-radius: 4px;text-indent: 0px;}
+#regform p #agree{width:13px;height: 13px;}
+#regform .item{height:25px;}
+.item i,.item a{position:absolute;}
+.item i{left:20px;top:-2px;}
+.item a{left:45px;top: -2px;color: #e30164;}
+#logform .forgetpass{height:30px;}
+#logform .forgetpass a{color: #666;}
+#logform .forgetpass:hover a{color: #ab0036;}
+#logspan i{display: block;}
+
+
+
